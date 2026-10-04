@@ -230,4 +230,4 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Hiragino Sans",
 .panel-footer{padding-top:10px;padding-bottom:0}
 .board-search-wrap{margin:12px 0 0}
 .search-history{top:calc(100% + 8px);bottom:auto}
-@media(max-width:850px){.board-search-wrap{order:5;margin:12px 0 0}.panel-footer{padding-top:8px}.search-history{top:auto;bottom:calc(100% + 8px)}}
+@media(max-width:850px){.board-panel{padding-bottom:calc(76px + env(safe-area-inset-bottom))}.board-search-wrap{order:5;margin:12px 0 0}.panel-footer{padding-top:8px}.search-history{top:auto;bottom:calc(100% + 8px)}}
