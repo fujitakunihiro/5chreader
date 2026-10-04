@@ -36,6 +36,7 @@
       </section>
 
       <section class="board-view hidden" id="boardView">
+        <nav class="breadcrumb" id="boardBreadcrumb" aria-label="パンくずリスト"></nav>
         <div class="board-heading">
           <div class="board-heading-copy"><div class="eyebrow"><span class="status-dot"></span><span id="boardCategoryLabel">5ch BOARD</span></div><h2 id="boardTitle">板名</h2><p id="boardMeta">スレッド一覧を読み込みます</p></div>
           <a class="outline-link" id="openBoardSource" target="_blank" rel="noopener noreferrer">5chで板を開く ↗</a>
@@ -49,6 +50,7 @@
 
       <section class="reader-view hidden" id="readerView">
         <div class="reader-topline"><button id="backToThreads" class="back-button" type="button">← スレッド一覧</button><a id="openThreadSource" class="outline-link" target="_blank" rel="noopener noreferrer">5chの元スレを開く ↗</a></div>
+        <nav class="breadcrumb" id="readerBreadcrumb" aria-label="パンくずリスト"></nav>
         <div class="reader-heading"><p class="overline" id="readerBoardName">板</p><h2 id="readerTitle">スレッドタイトル</h2><div class="reader-stats" id="readerStats"></div></div>
         <div class="load-state hidden" id="postsLoading"><span class="spinner"></span><span>レスを読み込み中…</span></div>
         <div class="error-box hidden" id="threadError"></div>
