@@ -58,6 +58,16 @@ def allowed_5ch_url(value):
 
 def clean_text(fragment):
     fragment = re.sub(r"(?is)<(script|style)\b[^>]*>.*?</\1\s*>", "", fragment)
+    def keep_link_target(match):
+        href_match = re.search(r"\bhref\s*=\s*([\"'])(.*?)\1", match.group(1), re.I | re.S)
+        if not href_match:
+            return match.group(2)
+        href = html.unescape(href_match.group(2)).strip()
+        label = re.sub(r"<[^>]+>", "", match.group(2))
+        if re.match(r"https?://", href, re.I) and href not in html.unescape(label):
+            return f"{match.group(2)} {href}"
+        return match.group(2)
+    fragment = re.sub(r"(?is)<a\b([^>]*)>(.*?)</a\s*>", keep_link_target, fragment)
     fragment = re.sub(r"(?i)<br\s*/?>", "\n", fragment)
     fragment = re.sub(r"(?i)</(?:div|p|li|blockquote)\s*>", "\n", fragment)
     fragment = re.sub(r"<[^>]+>", "", fragment)
