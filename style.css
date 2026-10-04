@@ -94,9 +94,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #007a
   .welcome h2{font-size:31px}
 }
 
-.bottom-navigation{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:10px;margin:10px 0 0;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.bottom-navigation .first-post-button{grid-column:1/-1;justify-self:center;min-height:42px;padding:9px 18px;border-radius:12px;background:var(--orange-soft);border-color:#f3d5c8;color:#c9502c;font-size:13px}
+.bottom-navigation{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto;gap:10px;margin:10px 0 0;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.bottom-navigation .first-post-button{min-height:46px;padding:9px 14px;border-radius:12px;background:var(--orange-soft);border-color:#f3d5c8;color:#c9502c;font-size:13px}
 .bottom-navigation .page-button:not(.first-post-button){min-height:46px;padding:10px 14px;font-size:13px}
 .bottom-navigation .post-range{text-align:center;white-space:nowrap;color:#777972;font-size:12px;font-weight:650}
-@media(max-width:850px){.bottom-navigation{gap:8px;padding:12px 0 18px}.bottom-navigation .page-button:not(.first-post-button){min-height:48px;padding:9px 10px;font-size:13px}}
-@media(max-width:370px){.bottom-navigation{gap:5px}.bottom-navigation .page-button:not(.first-post-button){padding:8px 6px;font-size:12px}.bottom-navigation .post-range{font-size:10px}}
+@media(max-width:850px){.app-layout{padding-bottom:calc(82px + env(safe-area-inset-bottom))}.reader-view{padding-bottom:74px}.bottom-navigation{position:fixed;z-index:6;left:12px;right:12px;bottom:calc(70px + env(safe-area-inset-bottom));grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:7px;max-width:876px;margin:0 auto;padding:8px;border:1px solid var(--line);border-radius:16px;background:#fffffff2;backdrop-filter:blur(18px);box-shadow:0 8px 24px #1d1f1818}.bottom-navigation .post-range{display:none}.bottom-navigation .page-button,.bottom-navigation .page-button:not(.first-post-button){min-width:0;min-height:48px;padding:8px 5px;font-size:12px}.bottom-navigation .first-post-button{font-size:11px}}
+@media(max-width:370px){.bottom-navigation{left:8px;right:8px;gap:5px}.bottom-navigation .page-button,.bottom-navigation .page-button:not(.first-post-button){padding:7px 3px;font-size:11px}.bottom-navigation .first-post-button{font-size:10px}}
