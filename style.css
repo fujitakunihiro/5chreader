@@ -231,3 +231,17 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Hiragino Sans",
 .board-search-wrap{margin:12px 0 0}
 .search-history{top:calc(100% + 8px);bottom:auto}
 @media(max-width:850px){.board-panel{padding-bottom:calc(76px + env(safe-area-inset-bottom))}.board-search-wrap{order:5;margin:12px 0 0}.panel-footer{padding-top:8px}.search-history{top:auto;bottom:calc(100% + 8px)}}
+
+@media(max-width:850px){
+  .app-layout{padding-left:8px;padding-right:8px}
+  .thread-row,.post{padding:12px}
+  .bottom-navigation{left:6px;right:6px}
+  .mobile-bottom-bar{padding-left:8px;padding-right:8px}
+}
+@media(max-width:390px){
+  .app-layout{padding-left:6px;padding-right:6px}
+  .bottom-navigation{left:4px;right:4px}
+  .thread-row{padding:11px}
+  .post{padding:11px 10px}
+  .mobile-bottom-bar{padding-left:6px;padding-right:6px}
+}
