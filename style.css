@@ -263,3 +263,4 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Hiragino Sans",
   .bottom-navigation .first-post-button,.bottom-navigation .last-post-button{font-size:9px;padding-left:1px;padding-right:1px}
   .mobile-dock-action{font-size:8px}
 }
+@media(max-width:850px){.bottom-navigation button{touch-action:manipulation;-webkit-user-select:none;user-select:none}}
