@@ -221,8 +221,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Hiragino Sans",
 /* Keep the board list independently scrollable and the search field at the menu bottom. */
 .board-panel{display:flex;flex-direction:column;overflow:visible;min-height:0}
 .panel-head,.category-heading,.panel-footer,.board-search-wrap{flex:none}
+.panel-head{order:0}
+.board-search-wrap{order:1}
+.category-heading{order:2}
+.category-tree{order:3}
+.panel-footer{order:4}
 .category-tree{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin}
 .panel-footer{padding-top:10px;padding-bottom:0}
 .board-search-wrap{margin:12px 0 0}
-.search-history{top:auto;bottom:calc(100% + 8px)}
-@media(max-width:850px){.board-search-wrap{margin:12px 0 0}.panel-footer{padding-top:8px}}
+.search-history{top:calc(100% + 8px);bottom:auto}
+@media(max-width:850px){.board-search-wrap{order:5;margin:12px 0 0}.panel-footer{padding-top:8px}.search-history{top:auto;bottom:calc(100% + 8px)}}
