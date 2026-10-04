@@ -100,7 +100,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #007a
 .bottom-navigation .post-range{text-align:center;white-space:nowrap;color:#777972;font-size:12px;font-weight:650}
 @media(max-width:850px){.app-layout{padding-bottom:calc(82px + env(safe-area-inset-bottom))}.reader-view{padding-bottom:74px}.bottom-navigation{position:fixed;z-index:6;left:12px;right:12px;bottom:calc(70px + env(safe-area-inset-bottom));grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:7px;max-width:876px;margin:0 auto;padding:8px;border:1px solid var(--line);border-radius:16px;background:#fffffff2;backdrop-filter:blur(18px);box-shadow:0 8px 24px #1d1f1818}.bottom-navigation .post-range{display:none}.bottom-navigation .page-button,.bottom-navigation .page-button:not(.first-post-button){min-width:0;min-height:48px;padding:8px 5px;font-size:12px}.bottom-navigation .first-post-button{font-size:11px}}
 @media(max-width:370px){.bottom-navigation{left:8px;right:8px;gap:5px}.bottom-navigation .page-button,.bottom-navigation .page-button:not(.first-post-button){padding:7px 3px;font-size:11px}.bottom-navigation .first-post-button{font-size:10px}}
-.post{scroll-margin-top:20px;transition:border-color .2s,box-shadow .2s,background-color .2s}
+.post{scroll-margin-top:20px;transition:border-color .12s,box-shadow .12s,background-color .12s}
 .post-body a{color:#007aff;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px;overflow-wrap:anywhere}
 .post-body a.post-reference{display:inline-block;padding:0 3px;border-radius:5px;background:#edf4ff;color:#0063cc;font-weight:700;text-decoration:none}
 .post.reference-target{border-color:#007aff;background:#f4f8ff;box-shadow:0 0 0 3px #007aff20}
