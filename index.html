@@ -44,11 +44,15 @@
       <section class="reader-view hidden" id="readerView">
         <div class="reader-topline"><button id="backToThreads" class="back-button" type="button">← スレッド一覧</button><a id="openThreadSource" class="outline-link" target="_blank" rel="noopener noreferrer">5chの元スレを開く ↗</a></div>
         <div class="reader-heading"><p class="overline" id="readerBoardName">板</p><h2 id="readerTitle">スレッドタイトル</h2><div class="reader-stats" id="readerStats"></div></div>
-        <div class="post-navigation"><button id="olderPosts" type="button" class="page-button">← 前のレス</button><span id="postRange">読み込み中</span><button id="newerPosts" type="button" class="page-button">次のレス →</button></div>
         <div class="load-state hidden" id="postsLoading"><span class="spinner"></span><span>レスを読み込み中…</span></div>
         <div class="error-box hidden" id="threadError"></div>
         <div class="posts" id="posts"></div>
-        <div class="post-navigation bottom-navigation"><button id="olderPostsBottom" type="button" class="page-button">← 前のレス</button><span id="postRangeBottom"></span><button id="newerPostsBottom" type="button" class="page-button">次のレス →</button></div>
+        <div class="post-navigation bottom-navigation">
+          <button id="readFromStart" type="button" class="page-button first-post-button">最初から読む</button>
+          <button id="olderPostsBottom" type="button" class="page-button">← 前のレス</button>
+          <span id="postRangeBottom" class="post-range"></span>
+          <button id="newerPostsBottom" type="button" class="page-button">次のレス →</button>
+        </div>
         <p class="reader-note">レスの内容は5ちゃんねるから取得しています。投稿内のURLなどはテキストとして表示します。</p>
       </section>
       <footer class="main-footer"><span>5ch Reader</span><span>閲覧専用 ・ 書き込み機能はありません</span></footer>

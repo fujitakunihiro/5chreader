@@ -93,3 +93,10 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #007a
   .reader-heading h2{font-size:21px}
   .welcome h2{font-size:31px}
 }
+
+.bottom-navigation{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:10px;margin:10px 0 0;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.bottom-navigation .first-post-button{grid-column:1/-1;justify-self:center;min-height:42px;padding:9px 18px;border-radius:12px;background:var(--orange-soft);border-color:#f3d5c8;color:#c9502c;font-size:13px}
+.bottom-navigation .page-button:not(.first-post-button){min-height:46px;padding:10px 14px;font-size:13px}
+.bottom-navigation .post-range{text-align:center;white-space:nowrap;color:#777972;font-size:12px;font-weight:650}
+@media(max-width:850px){.bottom-navigation{gap:8px;padding:12px 0 18px}.bottom-navigation .page-button:not(.first-post-button){min-height:48px;padding:9px 10px;font-size:13px}}
+@media(max-width:370px){.bottom-navigation{gap:5px}.bottom-navigation .page-button:not(.first-post-button){padding:8px 6px;font-size:12px}.bottom-navigation .post-range{font-size:10px}}
