@@ -18,13 +18,9 @@
   <div class="app-layout">
     <aside class="board-panel" id="boardPanel" aria-label="板一覧">
       <div class="panel-head"><div><p class="overline">BOARD MENU</p><h1>板を探す</h1></div><button class="close-panel" id="closeBoards" aria-label="板一覧を閉じる">×</button></div>
-      <label class="board-search"><span>⌕</span><input id="boardSearch" type="search" placeholder="板名で検索" autocomplete="off" /></label>
-      <div class="all-boards"><button id="allBoardsButton" class="all-boards-button" type="button"><span>▦</span><span>全板から探す</span><small id="boardTotal">読み込み中</small></button></div>
-      <div class="category-heading"><span>カテゴリ</span><span id="categoryTotal"></span></div>
-      <div id="categoryList" class="category-list" aria-label="カテゴリ"></div>
-      <div class="board-list-heading"><span id="boardListTitle">板</span><span id="shownBoardCount"></span></div>
-      <div id="boardList" class="board-list" aria-label="板一覧"></div>
-      <button class="more-boards hidden" id="moreBoards" type="button">板をもっと表示</button>
+      <label class="board-search"><span>⌕</span><input id="boardSearch" type="search" placeholder="カテゴリ・板を検索" autocomplete="off" /></label>
+      <div class="category-heading"><span>カテゴリと板</span><span id="categoryTotal"></span></div>
+      <div id="categoryList" class="category-tree" aria-label="カテゴリと板"></div>
       <div class="panel-footer">板一覧は5ch公式メニューから取得</div>
     </aside>
     <div class="mobile-scrim" id="mobileScrim"></div>
