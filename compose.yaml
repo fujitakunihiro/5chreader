@@ -1,0 +1,17 @@
+services:
+  reader-api:
+    build:
+      context: .
+      dockerfile: api.Dockerfile
+    image: matomelo-api:local
+    container_name: matomelo-api
+    restart: unless-stopped
+  matomelo:
+    build: .
+    image: matomelo-web:local
+    container_name: matomelo-web
+    depends_on:
+      - reader-api
+    ports:
+      - "8081:80"
+    restart: unless-stopped

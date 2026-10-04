@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f5f5f2" />
+  <meta name="description" content="5ちゃんねるの板・スレッド一覧と投稿を見やすく読むローカルリーダー。" />
+  <title>5ch Reader｜板とスレッドを読む</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="5ch Reader ホーム"><span class="brand-mark">5</span><span>5ch <b>Reader</b></span></a>
+    <div class="top-caption"><span class="live-dot"></span> 5ちゃんねるのスレッドを読む</div>
+    <button class="mobile-board-button" id="openBoards" type="button"><span>☷</span> 板を選ぶ</button>
+  </header>
+
+  <div class="app-layout">
+    <aside class="board-panel" id="boardPanel" aria-label="板一覧">
+      <div class="panel-head"><div><p class="overline">BOARD MENU</p><h1>板を探す</h1></div><button class="close-panel" id="closeBoards" aria-label="板一覧を閉じる">×</button></div>
+      <label class="board-search"><span>⌕</span><input id="boardSearch" type="search" placeholder="板名で検索" autocomplete="off" /></label>
+      <div class="all-boards"><button id="allBoardsButton" class="all-boards-button" type="button"><span>▦</span><span>全板から探す</span><small id="boardTotal">読み込み中</small></button></div>
+      <div class="category-heading"><span>カテゴリ</span><span id="categoryTotal"></span></div>
+      <div id="categoryList" class="category-list" aria-label="カテゴリ"></div>
+      <div class="board-list-heading"><span id="boardListTitle">板</span><span id="shownBoardCount"></span></div>
+      <div id="boardList" class="board-list" aria-label="板一覧"></div>
+      <button class="more-boards hidden" id="moreBoards" type="button">板をもっと表示</button>
+      <div class="panel-footer">板一覧は5ch公式メニューから取得</div>
+    </aside>
+    <div class="mobile-scrim" id="mobileScrim"></div>
+
+    <main class="main-panel">
+      <section class="welcome" id="welcome">
+        <div class="welcome-icon">5ch</div>
+        <p class="overline">YOUR 5CH READER</p>
+        <h2>板を選んで、<br class="mobile-only" />スレッドを読もう。</h2>
+        <p class="welcome-copy">板一覧から好きな板を選ぶと、公開中のスレッド一覧を読み込みます。<br />スレッド本文もこの画面で読めます。</p>
+        <button class="primary-button" id="welcomeChoose" type="button">板一覧を開く <span>→</span></button>
+        <div class="welcome-pills"><span>公式板一覧</span><span>スレッド検索</span><span>レス本文表示</span></div>
+      </section>
+
+      <section class="board-view hidden" id="boardView">
+        <div class="board-heading">
+          <div class="board-heading-copy"><div class="eyebrow"><span class="status-dot"></span><span id="boardCategoryLabel">5ch BOARD</span></div><h2 id="boardTitle">板名</h2><p id="boardMeta">スレッド一覧を読み込みます</p></div>
+          <a class="outline-link" id="openBoardSource" target="_blank" rel="noopener noreferrer">5chで板を開く ↗</a>
+        </div>
+        <div class="thread-toolbar"><label class="thread-search"><span>⌕</span><input id="threadSearch" type="search" placeholder="この板のスレッドを検索" autocomplete="off" /></label><span class="thread-count" id="threadCount"></span></div>
+        <div class="load-state hidden" id="boardLoading"><span class="spinner"></span><span>スレッド一覧を読み込み中…</span></div>
+        <div class="error-box hidden" id="boardError"></div>
+        <div class="thread-list" id="threadList"></div>
+        <div class="no-results hidden" id="noThreads">一致するスレッドがありません。</div>
+      </section>
+
+      <section class="reader-view hidden" id="readerView">
+        <div class="reader-topline"><button id="backToThreads" class="back-button" type="button">← スレッド一覧</button><a id="openThreadSource" class="outline-link" target="_blank" rel="noopener noreferrer">5chの元スレを開く ↗</a></div>
+        <div class="reader-heading"><p class="overline" id="readerBoardName">板</p><h2 id="readerTitle">スレッドタイトル</h2><div class="reader-stats" id="readerStats"></div></div>
+        <div class="post-navigation"><button id="olderPosts" type="button" class="page-button">← 前のレス</button><span id="postRange">読み込み中</span><button id="newerPosts" type="button" class="page-button">次のレス →</button></div>
+        <div class="load-state hidden" id="postsLoading"><span class="spinner"></span><span>レスを読み込み中…</span></div>
+        <div class="error-box hidden" id="threadError"></div>
+        <div class="posts" id="posts"></div>
+        <div class="post-navigation bottom-navigation"><button id="olderPostsBottom" type="button" class="page-button">← 前のレス</button><span id="postRangeBottom"></span><button id="newerPostsBottom" type="button" class="page-button">次のレス →</button></div>
+        <p class="reader-note">レスの内容は5ちゃんねるから取得しています。投稿内のURLなどはテキストとして表示します。</p>
+      </section>
+      <footer class="main-footer"><span>5ch Reader</span><span>閲覧専用 ・ 書き込み機能はありません</span></footer>
+    </main>
+  </div>
+  <script src="/app.js" defer></script>
+</body>
+</html>
