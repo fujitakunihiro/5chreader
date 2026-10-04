@@ -215,6 +215,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Hiragino Sans",
 .search-history-option:hover,.search-history-option:focus-visible{background:#007aff12}
 .search-history-icon{flex:none;width:22px;text-align:center;color:var(--muted);font-size:18px}
 .search-history-empty{margin:0;padding:12px 10px;color:var(--muted);font-size:13px}
+.search-history-row{display:flex;align-items:center;gap:2px}
+.search-history-row .search-history-option{flex:1;min-width:0;width:auto}
+.search-history-row .search-history-option>span:last-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.search-history-remove{display:grid;place-items:center;flex:none;width:44px;height:44px;padding:0;border:0;border-radius:11px;background:transparent;color:var(--muted);font-size:23px;line-height:1}
+.search-history-remove:hover,.search-history-remove:focus-visible{background:#ff3b3015;color:#ff3b30}
 @media(max-width:850px){.board-search-wrap{margin:18px 0 12px}.search-history-option{min-height:50px;font-size:16px}}
 @media(prefers-color-scheme:dark){.search-history{background:#1c1c1ef2}.search-history-option:hover,.search-history-option:focus-visible{background:#0a84ff20}.search-history-head button,.search-history-option .search-history-icon{color:#64aaff}}
 
