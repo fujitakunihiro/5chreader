@@ -12,6 +12,9 @@
   <div class="app-layout">
     <aside class="board-panel" id="boardPanel" aria-label="板一覧">
       <div class="panel-head"><div><p class="overline">BOARD MENU</p><h1>板を探す</h1></div><button class="close-panel" id="closeBoards" aria-label="板一覧を閉じる">×</button></div>
+      <div class="category-heading"><span>カテゴリと板</span><span id="categoryTotal"></span></div>
+      <div id="categoryList" class="category-tree" aria-label="カテゴリと板"></div>
+      <div class="panel-footer">板一覧は5ch公式メニューから取得</div>
       <div class="board-search-wrap">
         <label class="board-search"><span aria-hidden="true">⌕</span><input id="boardSearch" type="search" placeholder="カテゴリ・板を検索" autocomplete="off" aria-controls="boardSearchHistory" aria-expanded="false" /></label>
         <div class="search-history hidden" id="boardSearchHistory" role="group" aria-label="検索履歴">
@@ -19,9 +22,6 @@
           <div class="search-history-list" id="boardSearchHistoryList"></div>
         </div>
       </div>
-      <div class="category-heading"><span>カテゴリと板</span><span id="categoryTotal"></span></div>
-      <div id="categoryList" class="category-tree" aria-label="カテゴリと板"></div>
-      <div class="panel-footer">板一覧は5ch公式メニューから取得</div>
     </aside>
     <div class="mobile-scrim" id="mobileScrim"></div>
 
