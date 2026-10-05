@@ -292,6 +292,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Hiragino Sans",
 
 .mobile-side-navigation{display:none}
 @media(max-width:850px){
+  .reader-view{touch-action:pan-y}
   .bottom-navigation{grid-template-columns:repeat(4,minmax(0,1fr))}
   .bottom-navigation #olderPostsBottom,.bottom-navigation #newerPostsBottom{display:none!important}
   .mobile-side-navigation{position:fixed;z-index:7;top:50%;right:calc(8px + env(safe-area-inset-right));display:flex;flex-direction:column;gap:8px;transform:translateY(-50%);pointer-events:none}
