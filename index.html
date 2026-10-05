@@ -56,13 +56,11 @@
         <div class="error-box hidden" id="threadError"></div>
         <div class="posts" id="posts"></div>
         <nav class="post-navigation bottom-navigation" aria-label="スレッド内操作">
-          <button id="readerOpenBoards" type="button" class="page-button mobile-dock-action mobile-menu" aria-label="板メニューを開く"><span aria-hidden="true">☰</span><span>板</span></button>
           <button id="readFromStart" type="button" class="page-button first-post-button" aria-label="最初から読む（レス1〜100）">最初から<span class="range-label">（1–100）</span></button>
           <button id="readToEnd" type="button" class="page-button last-post-button" aria-label="最後へ移動（最新100レス）">最後に<span class="range-label">（最新100）</span></button>
           <button id="olderPostsBottom" type="button" class="page-button" aria-label="前のコメントへ">← 前へ</button>
           <span id="postRangeBottom" class="post-range"></span>
           <button id="newerPostsBottom" type="button" class="page-button" aria-label="次のコメントへ">次へ →</button>
-          <button id="mobileBackToThreads" type="button" class="page-button mobile-dock-action mobile-back hidden" aria-label="スレッド一覧へ戻る"><span aria-hidden="true">←</span><span>一覧</span></button>
         </nav>
         <nav id="mobileSideNavigation" class="mobile-side-navigation" aria-label="レス移動">
           <button id="togglePageNavSide" class="mobile-side-toggle" type="button" aria-label="ページ送りを左側に移動（左手モード）" aria-pressed="false" title="左手モードに切り替え"><span aria-hidden="true">⇄</span></button>
@@ -74,9 +72,6 @@
       <footer class="main-footer"><span>5ch Reader</span><span>閲覧専用 ・ 書き込み機能はありません</span></footer>
     </main>
   </div>
-  <nav class="mobile-bottom-bar" aria-label="クイック操作">
-    <button class="mobile-menu" id="mobileOpenBoards" type="button"><span aria-hidden="true">☰</span><span>板メニュー</span></button>
-  </nav>
   <script src="/app.js" defer></script>
 </body>
 </html>

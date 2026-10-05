@@ -274,9 +274,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Hiragino Sans",
 .mobile-dock-action{display:none}
 @media(max-width:850px){
   .reading .mobile-bottom-bar{display:none}
-  .app-layout{padding-bottom:calc(66px + env(safe-area-inset-bottom))}
+  .app-layout{padding-bottom:calc(12px + env(safe-area-inset-bottom))}
   .reader-view{padding-bottom:66px}
-  .bottom-navigation{left:0;right:0;bottom:0;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px;max-width:none;padding:6px 4px calc(6px + env(safe-area-inset-bottom));border-radius:16px 16px 0 0;border-bottom:0}
+  .bottom-navigation{left:0;right:0;bottom:0;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;max-width:none;padding:6px 4px calc(6px + env(safe-area-inset-bottom));border-radius:16px 16px 0 0;border-bottom:0}
   .bottom-navigation .page-button,.bottom-navigation .page-button:not(.first-post-button):not(.last-post-button){min-width:0;min-height:48px;padding:6px 2px;font-size:11px}
   .bottom-navigation .first-post-button,.bottom-navigation .last-post-button{min-height:48px;padding:6px 2px;font-size:10px}
   .mobile-dock-action{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;min-width:0;min-height:48px;padding:4px 1px;border-radius:10px;font-size:9px;font-weight:650;line-height:1.15;text-align:center;white-space:nowrap}
@@ -292,8 +292,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Hiragino Sans",
 
 .mobile-side-navigation{display:none}
 @media(max-width:850px){
-  .reader-view{touch-action:pan-y}
-  .bottom-navigation{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .reader-view,.board-view{touch-action:pan-y}
   .bottom-navigation #olderPostsBottom,.bottom-navigation #newerPostsBottom{display:none!important}
   .mobile-side-navigation{position:fixed;z-index:7;top:50%;right:calc(8px + env(safe-area-inset-right));display:flex;flex-direction:column;gap:8px;transform:translateY(-50%);pointer-events:none}
   .mobile-side-navigation.left-handed{right:auto;left:calc(8px + env(safe-area-inset-left))}
