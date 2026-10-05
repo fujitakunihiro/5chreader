@@ -289,3 +289,18 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Hiragino Sans",
   .mobile-dock-action{font-size:8px}
 }
 @media(max-width:850px){.bottom-navigation button{touch-action:manipulation;-webkit-user-select:none;user-select:none}}
+
+.mobile-side-navigation{display:none}
+@media(max-width:850px){
+  .bottom-navigation{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .bottom-navigation #olderPostsBottom,.bottom-navigation #newerPostsBottom{display:none!important}
+  .mobile-side-navigation{position:fixed;z-index:7;top:50%;right:calc(8px + env(safe-area-inset-right));display:flex;flex-direction:column;gap:8px;transform:translateY(-50%);pointer-events:none}
+  .mobile-side-navigation.left-handed{right:auto;left:calc(8px + env(safe-area-inset-left))}
+  .mobile-side-navigation.left-handed .mobile-side-toggle{border-color:#b8d7ff;background:#eaf3ff;color:#0063cc}
+  .mobile-side-toggle{display:grid;place-items:center;align-self:center;width:40px;height:34px;padding:0;border:1px solid #d2d2d7;border-radius:12px;background:#f5f5f7e8;backdrop-filter:blur(14px);box-shadow:0 3px 12px #0002;color:#6e6e73;font-size:21px;line-height:1;pointer-events:auto;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+  .mobile-side-toggle:active{transform:scale(.94)}
+  .mobile-side-button{display:grid;place-items:center;width:52px;height:52px;padding:0;border:1px solid #d2d2d7;border-radius:50%;background:#f5f5f7e8;backdrop-filter:blur(14px);box-shadow:0 3px 12px #0002;color:#007aff;font-size:29px;font-weight:600;line-height:1;pointer-events:auto;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+  .mobile-side-button:active{transform:scale(.94)}
+  .mobile-side-button:disabled{opacity:.4;box-shadow:none}
+}
+@media(prefers-color-scheme:dark){.mobile-side-button,.mobile-side-toggle{border-color:#48484a;background:#1c1c1ee8}.mobile-side-button{color:#64aaff}.mobile-side-button:disabled{color:#8e8e93}.mobile-side-toggle{color:#aeaeb2}.mobile-side-navigation.left-handed .mobile-side-toggle{border-color:#264668;background:#10233b;color:#64aaff}}
