@@ -53,7 +53,11 @@ def get_text(url):
 def allowed_5ch_url(value):
     parsed = urlparse(value)
     host = (parsed.hostname or "").lower()
-    return parsed.scheme == "https" and (host.endswith(".5ch.io") or host.endswith(".5ch.net") or host == "5ch.io")
+    return parsed.scheme == "https" and (
+        host == "5ch.io"
+        or host.endswith((".5ch.io", ".5ch.net", ".bbspink.com"))
+        or host in {"5ch.net", "bbspink.com"}
+    )
 
 
 def clean_text(fragment):
@@ -106,8 +110,11 @@ def load_menu():
             if not name or not url or not allowed_5ch_url(url):
                 continue
             parsed = urlparse(url)
+            board_name = parsed.path.rstrip("/").split("/")[-1]
+            if not re.fullmatch(r"[A-Za-z0-9_-]+", board_name):
+                continue
             key = f"{parsed.netloc.lower()}{parsed.path.rstrip('/')}"
-            if key in seen or parsed.path.rstrip("/").split("/")[-1] in {"subback", "public", "test"}:
+            if key in seen or board_name in {"subback", "public", "test"}:
                 continue
             seen.add(key)
             boards.append({"name": name.strip(), "url": url.rstrip("/") + "/"})
@@ -128,6 +135,11 @@ def board_list_url(board_url):
 
 
 def load_threads(board_url):
+    parsed_board = urlparse(board_url)
+    if not allowed_5ch_url(board_url):
+        raise ValueError("5ちゃんねるの板URLではありません")
+    if parsed_board.hostname == "headline.5ch.io":
+        return load_headline_threads(board_url)
     list_url, host, board_name = board_list_url(board_url)
     source = get_text(list_url)
     parser = BoardLinkParser()
@@ -159,6 +171,42 @@ def load_threads(board_url):
     return {"boardUrl": board_url, "threads": result, "updatedAt": time.strftime("%H:%M UTC", time.gmtime())}
 
 
+def load_headline_threads(board_url):
+    parser = BoardLinkParser()
+    parser.feed(get_text(board_url))
+    result, seen = [], set()
+    for link in parser.links:
+        thread_url = urljoin(board_url, html.unescape(link.get("href", "")).strip())
+        if not allowed_5ch_url(thread_url):
+            continue
+        parsed = urlparse(thread_url)
+        match = re.fullmatch(
+            r"/test/read\.cgi/([A-Za-z0-9_-]+)/([0-9]+)(?:/(?:l50|[0-9]+-[0-9]+))?/?",
+            parsed.path,
+        )
+        if not match:
+            continue
+        board_name, thread_id = match.groups()
+        key = f"{parsed.hostname}/{board_name}/{thread_id}"
+        if key in seen:
+            continue
+        seen.add(key)
+        title = clean_text("".join(link["text"]))
+        if not title:
+            continue
+        result.append({
+            "id": thread_id,
+            "title": title,
+            "posts": None,
+            "url": f"https://{parsed.netloc}/test/read.cgi/{board_name}/{thread_id}/l50",
+        })
+    return {
+        "boardUrl": board_url,
+        "threads": result,
+        "updatedAt": time.strftime("%H:%M UTC", time.gmtime()),
+    }
+
+
 def thread_page_url(value, start, end):
     if not allowed_5ch_url(value):
         raise ValueError("5ちゃんねるのスレッドURLではありません")
@@ -176,7 +224,7 @@ def load_posts(thread_url, start=0, end=0):
     source = get_text(fetch_url)
     title_match = re.search(r"(?is)<title[^>]*>(.*?)</title>", source)
     title = clean_text(title_match.group(1)) if title_match else "5ch スレッド"
-    starts = list(re.finditer(r'<div\b(?=[^>]*\bid="(\d+)")(?=[^>]*\bclass="[^"]*\bpost\b[^"]*")[^>]*>', source, re.I))
+    starts = list(re.finditer(r'<(?:div|article)\b(?=[^>]*\bid="(\d+)")(?=[^>]*\bclass="[^"]*\bpost\b[^"]*")[^>]*>', source, re.I))
     posts = []
     for index, marker in enumerate(starts):
         stop = starts[index + 1].start() if index + 1 < len(starts) else len(source)
@@ -184,13 +232,14 @@ def load_posts(thread_url, start=0, end=0):
         number = marker.group(1)
         user_match = re.search(r'(?is)class="postusername"[^>]*>.*?<b[^>]*>(.*?)</b>', block)
         date_match = re.search(r'(?is)class="date"[^>]*>(.*?)</span>', block)
-        body_match = re.search(r'(?is)<div\b[^>]*class="post-content"[^>]*>', block)
+        body_match = re.search(r'(?is)<(div|section)\b[^>]*class="[^"]*\bpost-content\b[^"]*"[^>]*>', block)
         body = ""
         if body_match:
             content_start = body_match.end()
             depth = 1
             content_end = len(block)
-            for tag in re.finditer(r"(?is)</?div\b[^>]*>", block[content_start:]):
+            content_tag = body_match.group(1)
+            for tag in re.finditer(rf"(?is)</?{content_tag}\b[^>]*>", block[content_start:]):
                 if tag.group(0).startswith("</"):
                     depth -= 1
                 else:
